@@ -1,0 +1,6 @@
+{
+  "name": "Urban Air Quality Assistant",
+  "description": "A GenAI-powered decision-support assistant helping families and communities in India navigate severe urban smog with real-time air quality data, personalized routines, indoor air guides, and sustainable alternatives.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

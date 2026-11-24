@@ -1,0 +1,365 @@
+{
+  "app": {
+    "title": "Urban Air Quality Assistant",
+    "guestBadge": "Guest Mode Ready · No Login Needed",
+    "skipToContent": "Skip to main content",
+    "nav": {
+      "assistant": "Assistant",
+      "dailyPlan": "Daily Plan",
+      "indoorGuide": "Indoor Guide",
+      "sustainable": "Low-Emission",
+      "chat": "Ask Q&A",
+      "settings": "Settings",
+      "help": "Help"
+    },
+    "actions": {
+      "tryDemo": "Try Demo",
+      "refresh": "Refresh",
+      "retry": "Retry",
+      "backToAssistant": "Back to Assistant",
+      "signIn": "Sign in",
+      "close": "Close"
+    }
+  },
+  "hero": {
+    "headline": "Know what to do about today's air in 10 seconds",
+    "subtitle": "Pick any city or locality in India above, use your location, or try one of the 3 real-time household personas below. We fetch live air quality and weather first, then tailor daily routines, indoor air steps, and low-emission swaps with clear impact estimates.",
+    "loadLivePlan": "Load live air & plan →"
+  },
+  "location": {
+    "heading": "Your location in India",
+    "active": "Active: {{name}}",
+    "prompt": "Select a city or locality to load live air data",
+    "searchPlaceholder": "Search any Indian city or locality (e.g., Indiranagar, Jaipur, Surat)",
+    "searchAria": "Search any Indian city or locality",
+    "useMyLocation": "Use my location",
+    "quickPickAria": "Quick-pick Indian cities",
+    "noMatches": "No matching Indian cities or localities found. Try another spelling.",
+    "geoUnsupported": "Browser geolocation is not supported on this device. Search your city or choose a quick-pick chip below.",
+    "geoDenied": "Location access was denied. No problem — search any Indian city or pick one below.",
+    "geoFailed": "Could not determine your GPS location right now. Please search your city or pick one below.",
+    "outsideIndia": "Your location appears to be outside India. Please search an Indian city or pick one below."
+  },
+  "snapshot": {
+    "updatedAt": "Updated {{time}}",
+    "freshnessLive": "Live ({{mins}}m ago)",
+    "freshnessRecent": "Recent ({{mins}}m ago)",
+    "freshnessStale": "Stale ({{mins}}m ago)",
+    "particulatesTitle": "Particulates & Dominant",
+    "dominantLabel": "Dominant pollutant:",
+    "usEpaRef": "US EPA Reference",
+    "cpcbEquiv": "CPCB Equivalent",
+    "weatherTitle": "Local Weather",
+    "temp": "Temp",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "weatherUnavailable": "Live weather temporarily unavailable.",
+    "modelledDisclosure": "Showing live modelled atmospheric data from Open-Meteo (CAMS). Street-level smog near heavy traffic or construction may be higher than modelled averages.",
+    "loading": "Fetching real-time air quality and weather for {{city}}...",
+    "unavailableTitle": "Live air data unavailable",
+    "neverFabricateNote": "We never display estimated or mock AQI numbers when upstream feeds fail.",
+    "retryAir": "Retry live data",
+    "categories": {
+      "good": "Good",
+      "satisfactory": "Satisfactory",
+      "moderate": "Moderate",
+      "poor": "Poor",
+      "very_poor": "Very Poor",
+      "severe": "Severe",
+      "unhealthy_sensitive": "Unhealthy for Sensitive Groups",
+      "unhealthy": "Unhealthy",
+      "very_unhealthy": "Very Unhealthy",
+      "hazardous": "Hazardous"
+    }
+  },
+  "verdict": {
+    "kicker": "Today's Verdict",
+    "whyButton": "Why this advice?",
+    "dataUsedTitle": "Live data & household context used",
+    "reasoningTitle": "How this plan was reasoned",
+    "planLoading": "Analyzing live air quality, weather, and your household profile...",
+    "planErrorTitle": "Could not generate personalized recommendations",
+    "retryPlan": "Retry advice generation"
+  },
+  "profile": {
+    "heading": "Household & lifestyle profile",
+    "subtitle": "Two residents in the same city receive different guidance based on commute, health, and home setup.",
+    "demosTitle": "One-click demo personas (uses live air data)",
+    "householdType": "Household type",
+    "commuteMode": "Commute mode",
+    "commuteMinutes": "Daily commute (mins)",
+    "outdoorHabits": "Outdoor habits",
+    "healthSensitivities": "Health sensitivities",
+    "homeSetup": "Home air setup",
+    "windows": "Windows",
+    "cookingFuel": "Cooking fuel",
+    "hasPurifier": "Have a HEPA air purifier at home",
+    "hasExhaustFan": "Kitchen exhaust fan / chimney installed",
+    "indoorPlants": "Keep indoor plants",
+    "indoorPm25Label": "Optional: Indoor purifier/monitor PM2.5 (µg/m³)",
+    "indoorPm25Placeholder": "Leave blank if you don't have a sensor",
+    "updatePlan": "Update personalized plan",
+    "updatingPlan": "Updating tailored plan...",
+    "options": {
+      "household": {
+        "working_professional": "Working professional",
+        "family_with_kids": "Family with young children",
+        "senior_citizens": "Senior citizens",
+        "students": "Students",
+        "community_group": "Community group / RWA"
+      },
+      "commute": {
+        "car_solo": "Solo car",
+        "two_wheeler": "Two-wheeler / scooter",
+        "metro_bus": "Metro / bus",
+        "auto_cab": "Auto / cab",
+        "walk_cycle": "Walk / cycle",
+        "wfh": "Work / study from home"
+      },
+      "outdoor": {
+        "kids_play": "Kids' play",
+        "morning_walk": "Morning walk",
+        "outdoor_sports": "Outdoor sports",
+        "market_errands": "Market errands"
+      },
+      "sensitivity": {
+        "asthma": "Asthma",
+        "allergies": "Allergies / sinus",
+        "elderly": "Elderly (60+)",
+        "pregnancy": "Pregnancy",
+        "heart_lung": "Heart / lung condition"
+      },
+      "windows": {
+        "sealed_ac": "Sealed / AC windows",
+        "standard_mesh": "Standard windows + mesh",
+        "open_ventilation": "Open ventilation"
+      },
+      "fuel": {
+        "lpg_png": "LPG / PNG gas",
+        "induction": "Electric / induction",
+        "biomass_kerosene": "Biomass / kerosene"
+      }
+    }
+  },
+  "planner": {
+    "heading": "Personalized daily planner",
+    "subtitle": "Tailored outdoor windows, commute decisions, mask choice, and recovery by time of day.",
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "commuteActivity": "Commute & activities:",
+    "maskGuidance": "Mask guidance",
+    "hydration": "Hydration & recovery",
+    "why": "Why:",
+    "estimatedBenefit": "Estimated benefit:",
+    "assumption": "Assumption:"
+  },
+  "indoor": {
+    "heading": "Indoor air quality guide",
+    "seal": "Keep windows & doors sealed",
+    "brief_ventilate": "Brief midday ventilation only (15–20 mins)",
+    "ventilate": "Safe to cross-ventilate indoors",
+    "readingNoteTitle": "Indoor sensor reading note",
+    "combustionWarning": "Avoid incense sticks (agarbatti), dhoop, mosquito coils, and dry broom sweeping indoors during high PM2.5 days."
+  },
+  "sustainable": {
+    "heading": "Sustainable low-emission alternatives",
+    "subtitle": "Practical swaps tailored to your current routine, with estimated reductions in personal exposure and local emissions.",
+    "insteadOf": "Instead of: {{current}}",
+    "estimatedImpact": "Estimated impact:"
+  },
+  "chat": {
+    "heading": "Ask about today's air",
+    "groundedIn": "Grounded in {{city}} · AQI {{aqi}} ({{source}})",
+    "subtitle": "Ask specific questions about your family's schedule. The assistant uses only live readings and will tell you honestly if data is unavailable.",
+    "placeholder": "Ask about outdoor play, masks, evening walks, or indoor cooking...",
+    "ariaLabel": "Ask a question about today's air quality",
+    "askButton": "Ask",
+    "dataNote": "Data note:",
+    "sample1": "My son plays football at 5pm, is it safe today?",
+    "sample2": "Should I open windows tonight or keep them shut?",
+    "sample3": "Is a cloth mask enough for my daily commute right now?"
+  },
+  "settings": {
+    "heading": "Preferences & Accessibility",
+    "subtitle": "Customize language, units, appearance, advice style, and planner defaults. Changes apply instantly.",
+    "storageGuestNote": "Guest mode: preferences are saved locally on this device.",
+    "storageMemoryNote": "Browser storage is blocked — preferences are kept for this session only.",
+    "sections": {
+      "language": "Language",
+      "units": "Units & Display",
+      "appearance": "Appearance & Accessibility",
+      "advice": "Advice Style",
+      "locationDefaults": "Location & Planner Defaults",
+      "alerts": "Alerts & Notifications",
+      "privacy": "Privacy & Reset"
+    },
+    "languageLabel": "App & AI advice language",
+    "tempUnitLabel": "Temperature unit",
+    "aqiScaleLabel": "AQI scale",
+    "timeFormatLabel": "Time format",
+    "themeLabel": "Color theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "textSizeLabel": "Text size",
+    "textNormal": "Normal",
+    "textLarge": "Large",
+    "textXl": "Extra large",
+    "highContrastLabel": "High contrast borders & text",
+    "reduceMotionLabel": "Reduce motion & animations",
+    "adviceDetailLabel": "Advice detail level",
+    "detailConcise": "Concise",
+    "detailDetailed": "Detailed",
+    "adviceToneLabel": "Advice tone",
+    "tonePlain": "Plain language",
+    "toneTechnical": "Technical",
+    "showWhyDefaultLabel": "Expand 'Why this advice?' automatically",
+    "defaultLocationLabel": "Default location on open",
+    "noDefaultLocation": "None (always ask me)",
+    "useCurrentOnOpenLabel": "Automatically request my GPS location on open",
+    "plannerSectionsLabel": "Visible planner sections",
+    "defaultCommuteLabel": "Default commute mode",
+    "preferredMaskLabel": "Preferred mask type",
+    "alertsSignedOutNote": "Sign in to sync preferences across devices and receive proactive smog push alerts.",
+    "exportLocal": "Export preferences & profile (JSON)",
+    "resetTour": "Restart onboarding tour",
+    "resetAll": "Reset all preferences",
+    "announcedUpdated": "Updated {{setting}}.",
+    "announcedReset": "All preferences reset to defaults.",
+    "announcedTourReset": "Onboarding tour has been reset."
+  },
+  "tour": {
+    "welcomeKicker": "Quick 7-Step Walkthrough",
+    "welcomeTitle": "Welcome to Urban Air Quality Assistant",
+    "welcomeBody": "Take a quick 7-step tour to see how live air readings turn into clear daily actions for your family.",
+    "takeTour": "Take the tour",
+    "skip": "Skip",
+    "next": "Next",
+    "back": "Back",
+    "finish": "Done",
+    "stepCounter": "{{current}} of {{total}}",
+    "whyHint": "Tip: Tap 'Why this advice?' above to inspect the exact live data, reasoning, and medical disclaimer behind today's guidance.",
+    "dismissHint": "Got it",
+    "steps": {
+      "location": {
+        "title": "Pick any city or locality in India",
+        "body": "Search any neighbourhood, tap Use my location, or pick a quick-pick chip. We fetch real-time air quality and weather first — never mock numbers."
+      },
+      "snapshot": {
+        "title": "Verify live air data & freshness",
+        "body": "See CPCB AQI (with icon and text category), PM2.5, PM10, dominant pollutant, weather, exact data source, and timestamp.",
+        "fallback": "Pick a city or try a demo persona to see the live air snapshot appear here."
+      },
+      "profile": {
+        "title": "Personalize for your household",
+        "body": "Set household type, commute, outdoor habits, health sensitivities, and home setup — or load one of the 3 one-click demo personas."
+      },
+      "planner": {
+        "title": "Today's Verdict & Daily Planner",
+        "body": "Get one clear verdict sentence up top, followed by morning, afternoon, and evening actions with mask guidance and estimated exposure reductions.",
+        "fallback": "Your personalized daily planner appears here right after live air data loads."
+      },
+      "indoor": {
+        "title": "Indoor Air Quality Guide",
+        "body": "Know whether to seal windows or ventilate briefly, where to run a purifier, cooking ventilation tips, and an optional indoor PM2.5 field.",
+        "fallback": "The indoor guide tailors to your home setup once a city is loaded."
+      },
+      "sustainableChat": {
+        "title": "Low-emission swaps & grounded Q&A",
+        "body": "Compare practical low-emission routine swaps with estimated CO₂/PM savings, and ask specific questions grounded strictly in live data.",
+        "fallback": "Ask live-grounded questions about your family's schedule here after loading a city."
+      },
+      "headerActions": {
+        "title": "Alerts, Settings, Help & Optional Sign-In",
+        "guestBody": "Guest mode works with zero login. Use the Bell for live in-app alerts, Settings for Hindi/dark/accessibility modes, ? for Help, or Sign in anytime to sync up to 5 locations and push alerts.",
+        "signedInBody": "You are signed in! Your profile, preferences, and saved locations sync automatically. Use the Bell for alerts, Settings for thresholds and accessibility, or ? for Help."
+      }
+    }
+  },
+  "help": {
+    "heading": "Help & Guide",
+    "subtitle": "Quick start, privacy-enhanced video walkthrough, FAQ, air-quality glossary, and troubleshooting.",
+    "quickStartTitle": "Quick start in 3 steps",
+    "videoTitle": "2-minute walkthrough",
+    "demosTitle": "Try a real-time demo scenario",
+    "faqTitle": "Frequently asked questions",
+    "glossaryTitle": "Air quality glossary",
+    "troubleshootingTitle": "Troubleshooting"
+  },
+  "toolbar": {
+    "languageGroup": "Language selection",
+    "selectLanguage": "Select language",
+    "switchToEnglish": "Switch language to English",
+    "switchToHindi": "Switch language to Hindi",
+    "fontSizeGroup": "Font size controls",
+    "decreaseFont": "Decrease font size",
+    "increaseFont": "Increase font size",
+    "themeToDark": "Switch to dark theme",
+    "themeToLight": "Switch to light theme",
+    "lightShort": "Light",
+    "darkShort": "Dark",
+    "tourButton": "Tour",
+    "tourAria": "Start guided coachmark tour"
+  },
+  "auth": {
+    "pageKicker": "Optional Account & Sync",
+    "pageTitle": "Sign in to Urban Air Quality Assistant",
+    "pageSubtitle": "Save your household profile, track up to 5 Indian cities, and receive proactive smog alerts — or keep using full guest mode with zero login.",
+    "continueGuest": "Continue in Guest Mode",
+    "benefitsHeading": "What signing in unlocks",
+    "benefit1Title": "Synced household profile",
+    "benefit1Body": "Keep your commute, sensitivities, and home air setup synced across phone and laptop.",
+    "benefit2Title": "Up to 5 saved Indian locations",
+    "benefit2Body": "Switch between home, office, school, or parents' city in one tap.",
+    "benefit3Title": "Proactive smog alerts",
+    "benefit3Body": "Set custom AQI thresholds, quiet hours, and receive browser push & in-app alerts.",
+    "benefit4Title": "Full privacy control",
+    "benefit4Body": "Export all your stored account data as JSON or delete your account permanently anytime.",
+    "continueGoogle": "Continue with Google",
+    "orWithEmail": "or with email",
+    "tabSignIn": "Sign in",
+    "tabSignUp": "Create account",
+    "tabReset": "Reset password",
+    "nameLabel": "Your name",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "submitSignIn": "Sign in with email",
+    "submitSignUp": "Create account & send verification",
+    "submitReset": "Send password reset email",
+    "resetSent": "Password reset link sent. Please check your email inbox.",
+    "privacyNote": "We store only your household profile, app preferences, up to 5 saved Indian locations, and alert settings strictly under your private account. Export or delete everything anytime in Settings.",
+    "signedInTitle": "You are signed in",
+    "signedInAs": "Signed in as {{email}}",
+    "goToAssistant": "Go to Assistant",
+    "openSettings": "Open Settings",
+    "signOut": "Sign out",
+    "errors": {
+      "popupClosed": "Sign-in window was closed before completing.",
+      "invalidCredential": "Incorrect email or password. Please check and try again.",
+      "emailInUse": "An account already exists with this email. Try signing in instead.",
+      "weakPassword": "Please choose a stronger password (at least 6 characters).",
+      "operationNotAllowed": "Email/password sign-in is not yet enabled in Firebase Auth. Please use Google Sign-In.",
+      "generic": "Could not complete sign-in right now. Please try again."
+    }
+  },
+  "demos": {
+    "delhi_commuter": {
+      "title": "Working Commuter · Delhi",
+      "subtitle": "Solo car, 60 min commute, morning walk, no air purifier"
+    },
+    "mumbai_family": {
+      "title": "Family with 2 Kids · Mumbai",
+      "subtitle": "Kids' outdoor play, mild allergies, HEPA purifier at home"
+    },
+    "kolkata_seniors": {
+      "title": "Senior Couple · Kolkata",
+      "subtitle": "60+ elderly & asthma sensitivity, open ventilation, LPG cooking"
+    }
+  },
+  "footer": {
+    "dataSources": "Live data via OpenAQ, CPCB (data.gov.in), WAQI & Open-Meteo",
+    "disclaimer": "General environmental guidance only — not medical advice. Estimates of exposure or emission savings are approximate.",
+    "feedback": "Feedback"
+  }
+}

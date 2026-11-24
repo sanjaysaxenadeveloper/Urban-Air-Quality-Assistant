@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "Private per-user document storing household profile, app preferences, up to 5 saved Indian locations, alert preferences, FCM tokens, and notification history.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Firebase Auth UID matching the document ID."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 254,
+          "description": "Verified user email address."
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "User display name."
+        },
+        "profile": {
+          "type": "object",
+          "description": "Household type, commute mode/duration, outdoor habits, health sensitivities, home setup, and optional indoor PM2.5."
+        },
+        "preferences": {
+          "type": "object",
+          "description": "Versioned v2 app preferences (language, units, theme, accessibility, advice style, tour state)."
+        },
+        "savedLocations": {
+          "type": "array",
+          "description": "Up to 5 saved Indian locations with per-location alert toggles."
+        },
+        "alertPrefs": {
+          "type": "object",
+          "description": "Notification thresholds, quiet hours, morning briefing time, daily cap, and sensitive mode."
+        },
+        "alertState": {
+          "type": "object",
+          "description": "Deduplication and cooldown tracking state per location."
+        },
+        "fcmTokens": {
+          "type": "array",
+          "description": "Up to 10 registered Web Push FCM tokens for this user."
+        },
+        "notificationHistory": {
+          "type": "array",
+          "description": "Recent up to 50 notification records for this user."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Immutable account document creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification server timestamp."
+        }
+      },
+      "required": [
+        "uid",
+        "email",
+        "displayName",
+        "profile",
+        "preferences",
+        "savedLocations",
+        "alertPrefs",
+        "alertState",
+        "fcmTokens",
+        "notificationHistory",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": { "$ref": "#/entities/UserAccount" },
+      "description": "Strict owner-only user profile, preferences, saved locations, and alert settings document."
+    }
+  }
+}

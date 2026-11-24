@@ -1,0 +1,113 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedOwner(uid) {
+      return isSignedIn()
+        && request.auth.uid == uid
+        && request.auth.token.email_verified == true;
+    }
+
+    function isValidUserAccount(data, uid) {
+      return data.keys().hasAll([
+          'uid',
+          'email',
+          'displayName',
+          'profile',
+          'preferences',
+          'savedLocations',
+          'alertPrefs',
+          'alertState',
+          'fcmTokens',
+          'notificationHistory',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid',
+          'email',
+          'displayName',
+          'profile',
+          'preferences',
+          'savedLocations',
+          'alertPrefs',
+          'alertState',
+          'fcmTokens',
+          'notificationHistory',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.uid is string
+        && data.uid == uid
+        && isValidId(data.uid)
+        && data.email is string
+        && data.email.size() <= 254
+        && data.displayName is string
+        && data.displayName.size() <= 120
+        && data.profile is map
+        && data.preferences is map
+        && data.savedLocations is list
+        && data.savedLocations.size() <= 5
+        && (data.savedLocations.size() == 0 || data.savedLocations[0] is map)
+        && data.alertPrefs is map
+        && data.alertState is map
+        && data.fcmTokens is list
+        && data.fcmTokens.size() <= 10
+        && (data.fcmTokens.size() == 0 || data.fcmTokens[0] is map)
+        && data.notificationHistory is list
+        && data.notificationHistory.size() <= 50
+        && (data.notificationHistory.size() == 0 || data.notificationHistory[0] is map)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    // Strict owner-only private user document (PII isolated; no collection list queries)
+    match /users/{uid} {
+      allow get: if isValidId(uid) && isSignedIn() && request.auth.uid == uid;
+      allow list: if false;
+
+      allow create: if isValidId(uid)
+        && isVerifiedOwner(uid)
+        && isValidUserAccount(incoming(), uid)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+
+      allow update: if isValidId(uid)
+        && isVerifiedOwner(uid)
+        && isValidUserAccount(incoming(), uid)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['profile', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['preferences', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['savedLocations', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['alertPrefs', 'fcmTokens', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['notificationHistory', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['profile', 'preferences', 'savedLocations', 'displayName', 'updatedAt'])
+        );
+
+      allow delete: if isValidId(uid) && isVerifiedOwner(uid);
+    }
+  }
+}

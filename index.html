@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Air Quality Assistant</title>
+    <meta
+      name="description"
+      content="A GenAI-powered decision-support assistant helping families and communities in India navigate severe urban smog with live air data, tailored daily routines, indoor guides, and low-emission alternatives."
+    />
+    <meta property="og:title" content="Urban Air Quality Assistant" />
+    <meta
+      property="og:description"
+      content="Live air quality decision support, indoor guides, and low-emission routines tailored for Indian families."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        try {
+          var raw = window.localStorage.getItem('uaqa_preferences_v2');
+          if (raw) {
+            var prefs = JSON.parse(raw);
+            if (prefs && prefs.theme === 'light') {
+              document.documentElement.classList.remove('dark');
+            } else if (
+              prefs &&
+              prefs.theme === 'system' &&
+              window.matchMedia &&
+              !window.matchMedia('(prefers-color-scheme: dark)').matches
+            ) {
+              document.documentElement.classList.remove('dark');
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

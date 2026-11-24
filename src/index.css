@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Gurmukhi', 'Noto Sans Bengali', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Gujarati', 'Noto Sans Kannada', 'Noto Sans Malayalam', system-ui, sans-serif;
+    --font-sans: 'DM Sans', 'Noto Sans Devanagari', 'Noto Sans Gurmukhi', 'Noto Sans Bengali', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Gujarati', 'Noto Sans Kannada', 'Noto Sans Malayalam', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  /* Pure black & deep obsidian palette for default dark theme */
+  html.dark {
+    --color-slate-950: #000000;
+    --color-slate-900: #0c0c0f;
+    --color-slate-800: #1d1d22;
+    --color-slate-700: #2e2e36;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[data-text-size='large'] {
+    font-size: 18px;
+  }
+
+  html[data-text-size='xl'] {
+    font-size: 20px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-black dark:text-neutral-100;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* High Contrast accessibility mode */
+html.high-contrast body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+html.high-contrast.dark body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+html.high-contrast section,
+html.high-contrast aside,
+html.high-contrast article,
+html.high-contrast header {
+  border-color: currentColor;
+}
+
+html.high-contrast a:focus-visible,
+html.high-contrast button:focus-visible,
+html.high-contrast input:focus-visible,
+html.high-contrast select:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 2px;
+}
+
+/* Reduced motion support (OS preference + explicit user preference toggle) */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
