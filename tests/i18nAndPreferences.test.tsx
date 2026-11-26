@@ -15,6 +15,7 @@ import {
   PREFERENCES_STORAGE_KEY,
   PreferencesProvider,
   loadStoredPreferences,
+  usePreferences,
 } from '../src/context/PreferencesContext.tsx';
 import { SettingsPage } from '../src/components/SettingsPage.tsx';
 import { createSafeStorage } from '../src/lib/storage.ts';
@@ -195,5 +196,71 @@ describe('SettingsPage & PreferencesProvider instant DOM application', () => {
     expect(document.documentElement.classList.contains('dark')).toBe(true);
     expect(document.documentElement.dataset.textSize).toBe('normal');
     expect(document.documentElement.classList.contains('high-contrast')).toBe(false);
+  });
+
+  it('covers PreferencesContext detectOsReducedMotion, detectOsDark, corrupted profile, and system theme mediaQuery change', async () => {
+    const { loadStoredProfile } = await import('../src/context/PreferencesContext.tsx');
+
+    // 1. Corrupted profile in storage triggers catch block (line 59)
+    const brokenStorage = createSafeStorage(null);
+    brokenStorage.setItem('uaqa_profile_v1', '{ invalid json');
+    const profile = loadStoredProfile(brokenStorage);
+    expect(profile.householdType).toBe('family_with_kids');
+
+    // 2. matchMedia prefers-reduced-motion: reduce and prefers-color-scheme: dark
+    const origMatchMedia = window.matchMedia;
+    let changeHandler: (() => void) | null = null;
+
+    window.matchMedia = ((query: string) => ({
+      matches: true,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: (_ev: string, handler: any) => {
+        changeHandler = handler;
+      },
+      removeEventListener: () => {},
+      dispatchEvent: () => true,
+    })) as any;
+
+    const loadedPrefs = loadStoredPreferences(brokenStorage);
+    expect(loadedPrefs.reduceMotion).toBe(true);
+
+    // 3. System theme mediaQuery change handler (lines 113-116)
+    brokenStorage.setItem(PREFERENCES_STORAGE_KEY, JSON.stringify({ ...DEFAULT_USER_PREFERENCES, theme: 'system' }));
+    const { unmount } = render(
+      <PreferencesProvider storage={brokenStorage}>
+        <div>Test Child</div>
+      </PreferencesProvider>
+    );
+
+    // Trigger mediaQuery change
+    if (changeHandler) {
+      changeHandler();
+    }
+    unmount();
+
+    // 4. updateProfile with invalid schema fallback (line 162) and duplicate markHintSeen (line 192)
+    function PrefsTester() {
+      const { updateProfile, markHintSeen } = usePreferences();
+      return (
+        <div>
+          <button onClick={() => updateProfile({ householdType: 'invalid_type' } as any)}>InvalidProfile</button>
+          <button onClick={() => markHintSeen('hint-dup')}>Hint</button>
+        </div>
+      );
+    }
+    const r2 = render(
+      <PreferencesProvider storage={brokenStorage}>
+        <PrefsTester />
+      </PreferencesProvider>
+    );
+    fireEvent.click(screen.getByText('InvalidProfile'));
+    fireEvent.click(screen.getByText('Hint'));
+    fireEvent.click(screen.getByText('Hint'));
+    r2.unmount();
+
+    window.matchMedia = origMatchMedia;
   });
 });

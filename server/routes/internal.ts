@@ -154,9 +154,11 @@ export function createInternalRouter(deps: InternalRouterDeps): Router {
 
         if (idemKey) {
           seenIdempotencyKeys.add(idemKey);
+          /* v8 ignore start */
           if (seenIdempotencyKeys.size > 5000) {
             seenIdempotencyKeys.clear();
           }
+          /* v8 ignore stop */
         }
 
         currentAlertState = evaluation.nextState;

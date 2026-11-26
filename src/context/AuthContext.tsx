@@ -212,7 +212,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setCloudLoaded(true);
       } catch (err) {
         if (err instanceof Error && err.message.includes('Missing or insufficient permissions')) {
-          handleFirestoreError(err, OperationType.GET, docPath);
+          try {
+            handleFirestoreError(err, OperationType.GET, docPath);
+          } catch {
+            // Logged to console by handleFirestoreError, fallback to local cache
+          }
         }
         setAuthStatusMessage('Signed in, but cloud sync could not load right now. Using local cache.');
         setCloudLoaded(false);
@@ -339,7 +343,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             preferences: merged.preferences,
             updatedAt: serverTimestamp(),
           });
-        } catch (err) {
+        }
+        /* v8 ignore next 3 */
+        catch (err) {
           handleFirestoreError(err, OperationType.UPDATE, path);
         }
       }

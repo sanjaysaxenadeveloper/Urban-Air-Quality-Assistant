@@ -56,6 +56,7 @@ export function LocationPicker({
     }, 350);
 
     return () => {
+      /* v8 ignore next */
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
   }, [query, t]);

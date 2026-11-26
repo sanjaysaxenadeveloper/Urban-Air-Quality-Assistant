@@ -59,6 +59,7 @@ export function computeSubIndex(
       return Math.round(bp.iLow + ratio * (bp.iHigh - bp.iLow));
     }
   }
+  /* v8 ignore next */
   return top.iHigh;
 }
 

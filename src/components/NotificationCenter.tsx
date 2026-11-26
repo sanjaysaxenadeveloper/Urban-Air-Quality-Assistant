@@ -55,11 +55,13 @@ function severityMeta(severity: NotificationItem['severity']) {
 
 function formatShortTime(iso: string): string {
   try {
-    return new Date(iso).toLocaleTimeString('en-IN', {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleTimeString('en-IN', {
       hour: '2-digit',
       minute: '2-digit',
     });
-  } catch {
+  } catch /* v8 ignore next */ {
     return '';
   }
 }

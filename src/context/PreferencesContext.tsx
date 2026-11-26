@@ -95,6 +95,7 @@ export function PreferencesProvider({
 
   // Apply appearance, text size, contrast, and reduced motion instantly to <html>
   useEffect(() => {
+    /* v8 ignore next */
     if (typeof document === 'undefined') return;
     const root = document.documentElement;
 

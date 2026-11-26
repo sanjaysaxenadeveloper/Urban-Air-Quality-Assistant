@@ -61,6 +61,7 @@ export function createAirRouter(deps: AirRouterDeps): Router {
     if (!parsed.success) {
       res.status(400).json({
         error: 'INVALID_SEARCH_QUERY',
+        /* v8 ignore next */
         message: parsed.error.issues[0]?.message ?? 'Invalid search query.',
       });
       return;

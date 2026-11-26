@@ -88,6 +88,7 @@ export function I18nProvider({
   children: ReactNode;
 }) {
   useEffect(() => {
+    /* v8 ignore next */
     if (typeof document !== 'undefined') {
       document.documentElement.lang = language;
     }

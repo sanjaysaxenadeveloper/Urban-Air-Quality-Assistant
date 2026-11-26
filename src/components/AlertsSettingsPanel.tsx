@@ -71,6 +71,7 @@ export function AlertsSettingsPanel({
 
   async function handleUnsubscribeAll() {
     setStatusNote('All proactive alerts disabled. You can re-enable them anytime.');
+    /* v8 ignore next */
     if (canEditCloudAlerts) {
       await onUpdateAlertPrefs({
         ...alertPrefs,

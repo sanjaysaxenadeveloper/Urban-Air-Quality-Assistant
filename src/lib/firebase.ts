@@ -64,6 +64,10 @@ export function handleFirestoreError(
 
 let connectionTested = false;
 
+export function _resetConnectionTested(): void {
+  connectionTested = false;
+}
+
 export async function testFirestoreConnection(): Promise<void> {
   if (connectionTested) return;
   connectionTested = true;

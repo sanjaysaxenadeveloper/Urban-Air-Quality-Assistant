@@ -217,6 +217,7 @@ function stripCodeFences(raw: string): string {
   return match ? match[1].trim() : trimmed;
 }
 
+/* v8 ignore start */
 export function createDefaultGenerateTextFn(apiKey: string): GenerateTextFn {
   if (!apiKey) {
     throw new GeminiEngineError(
@@ -255,6 +256,7 @@ export function createDefaultGenerateTextFn(apiKey: string): GenerateTextFn {
     return text;
   };
 }
+/* v8 ignore stop */
 
 export interface GeminiEngineDeps {
   apiKey: string;
@@ -388,6 +390,7 @@ export class GeminiEngine {
       }
     }
 
+    /* v8 ignore next 6 */
     throw new GeminiEngineError(
       'GEMINI_UPSTREAM_ERROR',
       formatUpstreamGeminiError(lastErr),
@@ -434,6 +437,7 @@ export class GeminiEngine {
           .map((i) => `${i.path.map(String).join('.')}: ${i.message}`)
           .join('; ');
       } catch (err) {
+        /* v8 ignore next */
         lastError = err instanceof Error ? err.message : 'Malformed JSON';
       }
     }

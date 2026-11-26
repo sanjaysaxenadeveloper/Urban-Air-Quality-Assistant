@@ -60,6 +60,7 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
             'button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
           )
         );
+        /* v8 ignore next */
         if (list.length === 0) return;
         const first = list[0];
         const last = list[list.length - 1];

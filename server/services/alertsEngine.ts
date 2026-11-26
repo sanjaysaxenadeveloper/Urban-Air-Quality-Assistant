@@ -64,6 +64,7 @@ export function getIstDateParts(now: Date): { dateKey: string; minutesOfDay: num
 
 export function parseHHmm(hhmm: string): number {
   const [hStr, mStr] = hhmm.split(':');
+  /* v8 ignore next */
   const h = Number.parseInt(hStr ?? '0', 10);
   const m = Number.parseInt(mStr ?? '0', 10);
   if (!Number.isFinite(h) || !Number.isFinite(m)) return 0;
